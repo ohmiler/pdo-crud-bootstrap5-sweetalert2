@@ -158,7 +158,7 @@
                     <td width="250px"><img width="100%" src="uploads/<?= $user['img']; ?>" class="rounded" alt=""></td>
                     <td>
                         <a href="edit.php?id=<?= $user['id']; ?>" class="btn btn-warning">Edit</a>
-                        <a data-id="<?= $user['id']; ?>" href="?delete=<?= $user['id']; ?>" class="btn btn-danger" id="deleteBtn">Delete</a>
+                        <a data-id="<?= $user['id']; ?>" href="?delete=<?= $user['id']; ?>" class="btn btn-danger delete-btn">Delete</a>
                     </td>
                 </tr>
                 <?php } 
@@ -182,7 +182,7 @@
             }
         }
 
-        $("#deleteBtn").click(function(e) {
+        $(".delete-btn").click(function(e) {
             var userId = $(this).data('id');
             e.preventDefault();
             deleteConfirm(userId);
@@ -204,7 +204,7 @@
                                 type: 'GET',
                                 data: 'delete=' + userId,
                             })
-                            .done(function(response) {
+                            .done(function() {
                                 Swal.fire({
                                     title: 'success',
                                     text: 'Data deleted successfully!',
